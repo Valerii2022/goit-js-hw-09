@@ -4,11 +4,11 @@ import 'flatpickr/dist/flatpickr.min.css';
 
 const refs = {
   startBtn: document.querySelector('[data-start]'),
-  timePickerRef: document.querySelector('#datetime-picker'),
-  daysTimerRef: document.querySelector('[data-days]'),
-  hoursTimerRef: document.querySelector('[data-hours]'),
-  minutesTimerRef: document.querySelector('[data-minutes]'),
-  secondsTimerRef: document.querySelector('[data-seconds]'),
+  timePicker: document.querySelector('#datetime-picker'),
+  daysTimer: document.querySelector('[data-days]'),
+  hoursTimer: document.querySelector('[data-hours]'),
+  minutesTimer: document.querySelector('[data-minutes]'),
+  secondsTimer: document.querySelector('[data-seconds]'),
 };
 
 refs.startBtn.disabled = true;
@@ -56,7 +56,7 @@ function addLeadingZero(value) {
 
 function startTimer() {
   refs.startBtn.disabled = true;
-  refs.timePickerRef.disabled = true;
+  refs.timePicker.disabled = true;
 
   timerId = setInterval(() => {
     deltaTime -= 1000;
@@ -66,9 +66,9 @@ function startTimer() {
     }
 
   const convertTime = convertMs(deltaTime);
-  refs.daysTimerRef.textContent = convertTime.days;
-  refs.hoursTimerRef.textContent = convertTime.hours;
-  refs.minutesTimerRef.textContent = convertTime.minutes;
-  refs.secondsTimerRef.textContent = convertTime.seconds;
+  refs.daysTimer.textContent = convertTime.days;
+  refs.hoursTimer.textContent = convertTime.hours;
+  refs.minutesTimer.textContent = convertTime.minutes;
+  refs.secondsTimer.textContent = convertTime.seconds;
   }, 1000);
 }
