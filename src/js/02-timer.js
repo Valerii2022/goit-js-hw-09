@@ -45,7 +45,9 @@ function convertMs(ms) {
   const days = addLeadingZero(Math.floor(ms / day));
   const hours = addLeadingZero(Math.floor((ms % day) / hour));
   const minutes = addLeadingZero(Math.floor(((ms % day) % hour) / minute));
-  const seconds = addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
+  const seconds = addLeadingZero(
+    Math.floor((((ms % day) % hour) % minute) / second)
+  );
 
   return { days, hours, minutes, seconds };
 }
@@ -65,10 +67,10 @@ function startTimer() {
       return;
     }
 
-  const convertTime = convertMs(deltaTime);
-  refs.daysTimer.textContent = convertTime.days;
-  refs.hoursTimer.textContent = convertTime.hours;
-  refs.minutesTimer.textContent = convertTime.minutes;
-  refs.secondsTimer.textContent = convertTime.seconds;
+    const { days, hours, minutes, seconds } = convertMs(deltaTime);
+    refs.daysTimer.textContent = days;
+    refs.hoursTimer.textContent = hours;
+    refs.minutesTimer.textContent = minutes;
+    refs.secondsTimer.textContent = seconds;
   }, 1000);
 }
