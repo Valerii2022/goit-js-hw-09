@@ -15,7 +15,7 @@ function handleinputSubmit(event) {
   const amount = Number(refs.form.elements.amount.value);
   const step = Number(refs.form.elements.step.value);
 
-  setTimeout(() => {
+  // setTimeout(() => {
     timerId = setInterval(() => {
       position += 1;
 
@@ -33,11 +33,12 @@ function handleinputSubmit(event) {
 
       if (position == amount) {
         clearInterval(timerId);
+        position = 0;
       }
 
       delay += step;
     }, step);
-  }, delay);
+  // }, delay);
 }
 
 function createPromise(position, delay) {
