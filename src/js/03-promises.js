@@ -14,12 +14,17 @@ function handleinputSubmit(event) {
   const step = Number(formRef.elements.step.value);
   const amount = Number(formRef.elements.amount.value);
 
+  if (amount <= 0) {
+    alert('Not valid amount!!!');
+    return;
+  }
+
   setTimeout(() => {
     position += 1;
 
     createPromise(position, delay).then(onSuccess).catch(onError);
 
-    if (amount <= 1) {
+    if (amount == 1) {
       position = 0;
       return;
     }
