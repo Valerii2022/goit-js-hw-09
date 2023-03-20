@@ -45,7 +45,7 @@ function handleinputSubmit(event) {
           console.log(`❌ Rejected promise ${position} in ${delay}ms`);
         });
 
-      if (position == amount - 1) {
+      if (position == amount) {
         clearInterval(timerId);
         position = 0;
       }
