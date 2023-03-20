@@ -13,22 +13,25 @@ function handleinputSubmit(event) {
   let delay = Number(formRef.elements.delay.value);
   const step = Number(formRef.elements.step.value);
   const amount = Number(formRef.elements.amount.value);
-  
+
   setTimeout(() => {
     position += 1;
 
     createPromise(position, delay)
       .then(({ position, delay }) => {
-        Notiflix.Notify.success(
-          `Fulfilled promise ${position} in ${delay}ms`
-        );
+        Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay}ms`);
         console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
         Notiflix.Notify.failure(`Rejected promise ${position} in ${delay}ms`);
         console.log(`❌ Rejected promise ${position} in ${delay}ms`);
       });
-    
+
+    if (amount <= 1) {
+      position = 0;
+      return;
+    }
+
     timerId = setInterval(() => {
       position += 1;
       delay += step;
@@ -49,9 +52,7 @@ function handleinputSubmit(event) {
         clearInterval(timerId);
         position = 0;
       }
-
     }, step);
-
   }, delay);
 }
 
@@ -65,4 +66,3 @@ function createPromise(position, delay) {
     }
   });
 }
-
