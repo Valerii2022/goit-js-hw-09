@@ -15,6 +15,7 @@ function handleinputSubmit(event) {
   const amount = Number(formRef.elements.amount.value);
   
   setTimeout(() => {
+    position += 1;
 
     createPromise(position, delay)
       .then(({ position, delay }) => {
